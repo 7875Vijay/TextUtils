@@ -1,12 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react'  //useState is the hooks used for the text area
 
 export default function TextForm(props) {
     
     const [text, setText] = useState()
     //text = "this is the converted text"   //this is the wrong way to change the text
     //setText("this is the converted text") //this is the right way to change the text
-
-
 
     const handelUPclick = ()=>{
         console.log(text)
