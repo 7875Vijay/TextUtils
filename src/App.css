@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+
+.newclass{
+  color: rgb(34, 198, 174);
+  font-style: bold;
+}
+
