@@ -1,7 +1,7 @@
 import React,{useState} from 'react'  //useState is the hooks used for the text area
 
 export default function TextForm(props) {
-    const [text, setText] = useState()
+    const [text, setText] = useState("")
     //text = "this is the converted text"   //this is the wrong way to change the text
     //setText("this is the converted text") //this is the right way to change the text
 
@@ -14,21 +14,36 @@ export default function TextForm(props) {
     const onchangeEvent = (event)=>{
         setText(event.target.value)
     }
+    const handelClearText = ()=>{
+        setText("")
+    }
+    const handelCopyText = ()=>{
+        let tx = document.getElementById("mybox")
+        tx.select()
+        navigator.clipboard.writeText(tx.value)
+    }
+    const handelSpacesText = ()=>{
+        let pureText = text.replace(/\s+/g, ' ');
+        setText(pureText)
+    }
 
     return (
         <>
         <div className='container my-3'>
             <h1>{props.heading}</h1>
             <div className="mb-3">
-                <textarea className="form-control" id="mybox" rows="15" onChange={onchangeEvent} value={text}></textarea>
+                <textarea className="form-control" id="mybox" rows="15" onChange={onchangeEvent} value={text} placeholder='Enter text here'></textarea>
             </div>
-            <button className='btn btn-primary mx-1' onClick={handelUPclick}>Convert to UpperCase</button>
-            <button className='btn btn-primary mx-1' onClick={handelLOclick}>Convert to LowerCase</button>
+            <button className='btn btn-primary mx-1 my-1' onClick={handelUPclick}>Convert to UpperCase</button>
+            <button className='btn btn-primary mx-1 my-1' onClick={handelLOclick}>Convert to LowerCase</button>
+            <button className='btn btn-primary mx-1 my-1' onClick={handelClearText}>Clear Text</button>
+            <button className='btn btn-primary mx-1 my-1' onClick={handelCopyText}>Copy Text</button>
+            <button className='btn btn-primary mx-1 my-1' onClick={handelSpacesText}>Remove Extra Spaces</button>
         </div>
         <div className='container my-3'>
             <h1>Text summary</h1>
-            <p> {text.split(" ").length} words and {text.length}</p>
-            <p> {0.008*text.split(" ").length}minuts will take to read the above paragraph</p>
+            <p> {text.split(" ").length-1} words and {text.length}</p>
+            <p> {0.008*text.split(" ").length-0.008} minuts will take to read the above paragraph</p>
         </div>
         </>
     )
