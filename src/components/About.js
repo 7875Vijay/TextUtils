@@ -7,23 +7,23 @@ export default function About() {
   const [myStyle, setMyStyle] = useState(
     {
       color:"#353639",
-      backgroundColor:"white",
+      backgroundColor:"#F5FAFF",
     }
   )
 
   const toggleStyle=()=>{
     if(myStyle.color === "#353639"){
       setMyStyle({
-        color:"white",
+        color:"#F5FAFF",
         backgroundColor:"#353639",
-        border:"2px solid white"
+        border:"2px solid #F5FAFF"
       })
       setBtnText("LightMode")
     }
     else{
       setMyStyle({
         color:"#353639",
-        backgroundColor:"white",
+        backgroundColor:"#F5FAFF",
       })
       setBtnText("DarkMode")
     }

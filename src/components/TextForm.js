@@ -20,19 +20,22 @@ export default function TextForm(props) {
     const handelCopyText = ()=>{
         let tx = document.getElementById("mybox")
         tx.select()
-        navigator.clipboard.writeText(tx.value)
+        navigator.clipboard.writeText(tx.value) //navigator is a way to navigate our text in to the teclipboard 
+                                                //and we use the writeText() function to write the value of tx object
     }
     const handelSpacesText = ()=>{
-        let pureText = text.replace(/\s+/g, ' ');
+        let pureText = text.replace(/\s+/g, ' '); //this is the method to replace all unwanted spaces with single space
+        pureText = pureText.trim()
         setText(pureText)
     }
+
 
     return (
         <>
         <div className='container my-3'>
             <h1>{props.heading}</h1>
             <div className="mb-3">
-                <textarea className="form-control" id="mybox" rows="15" onChange={onchangeEvent} value={text} placeholder='Enter text here'></textarea>
+                <textarea className="form-control" id="mybox" rows="10" style={{background:props.mode==="light"?"#F5FAFF":"#083E78", color:props.mode==="dark"?"#F5FAFF":"#083E78"}} onChange={onchangeEvent} value={text} placeholder='Enter text here'></textarea>
             </div>
             <button className='btn btn-primary mx-1 my-1' onClick={handelUPclick}>Convert to UpperCase</button>
             <button className='btn btn-primary mx-1 my-1' onClick={handelLOclick}>Convert to LowerCase</button>
