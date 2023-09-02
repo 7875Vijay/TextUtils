@@ -7,26 +7,31 @@ export default function TextForm(props) {
 
     const handelUPclick = ()=>{
         setText(text.toUpperCase())
+        props.showAlert("Converted to Uppercase", "success")
     }
     const handelLOclick = ()=>{
         setText(text.toLowerCase())
+        props.showAlert("Converted to Lowercase", "success")
     }
     const onchangeEvent = (event)=>{
         setText(event.target.value)
     }
     const handelClearText = ()=>{
         setText("")
+        props.showAlert("Text Cleared", "success")
     }
     const handelCopyText = ()=>{
         let tx = document.getElementById("mybox")
         tx.select()
         navigator.clipboard.writeText(tx.value) //navigator is a way to navigate our text in to the teclipboard 
                                                 //and we use the writeText() function to write the value of tx object
+        props.showAlert("Text Copied", "success")
     }
     const handelSpacesText = ()=>{
         let pureText = text.replace(/\s+/g, ' '); //this is the method to replace all unwanted spaces with single space
         pureText = pureText.trim()
         setText(pureText)
+        props.showAlert("Unnecessory spaces removed", "success")
     }
 
 
