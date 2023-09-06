@@ -42,16 +42,16 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control" id="mybox" rows="10" style={{background:props.mode==="light"?"#F5FAFF":"#083E78", color:props.mode==="dark"?"#F5FAFF":"#083E78"}} onChange={onchangeEvent} value={text} placeholder='Enter text here'></textarea>
             </div>
-            <button className='btn btn-primary mx-1 my-1' onClick={handelUPclick}>Convert to UpperCase</button>
-            <button className='btn btn-primary mx-1 my-1' onClick={handelLOclick}>Convert to LowerCase</button>
-            <button className='btn btn-primary mx-1 my-1' onClick={handelClearText}>Clear Text</button>
-            <button className='btn btn-primary mx-1 my-1' onClick={handelCopyText}>Copy Text</button>
-            <button className='btn btn-primary mx-1 my-1' onClick={handelSpacesText}>Remove Extra Spaces</button>
+            <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={handelUPclick}>Convert to UpperCase</button>
+            <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={handelLOclick}>Convert to LowerCase</button>
+            <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={handelClearText}>Clear Text</button>
+            <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={handelCopyText}>Copy Text</button>
+            <button disabled={text.length === 0} className='btn btn-primary mx-1 my-1' onClick={handelSpacesText}>Remove Extra Spaces</button>
         </div>
         <div className='container my-3'>
             <h1>Text summary</h1>
             <p> {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
-            <p> {0.008*text.split(" ").length-0.008} minuts will take to read the above paragraph</p>
+            <p> {0.008*text.split(" ").filter((element)=>{return element.length!==0}).length} minuts will take to read the above paragraph</p>
         </div>
         </>
     )
